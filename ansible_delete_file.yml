@@ -1,14 +1,15 @@
----
-tasks:
-  - name: ensure file exists
-    stat:
-      path: "/tmp/{{ file_name }}"
-    register: file_stat
-    failed_when: file_stat.stat.exists == False
+- name: file delete test playbook
+  hosts: all
+  tasks:
+    - name: ensure file exists
+      stat:
+        path: "/tmp/{{ file_name }}"
+      register: file_stat
+      failed_when: file_stat.stat.exists == False
 
-  - name: delete file if it exists
-    file:
-      state: absent
-      path: "/tmp/{{ file_name }}"
-    when: file_stat.stat.exists == True
-    failed_when: file_stat.stat.exists == True
+    - name: delete file if it exists
+      file:
+        state: absent
+        path: "/tmp/{{ file_name }}"
+      when: file_stat.stat.exists == True
+      failed_when: file_stat.stat.exists == True
