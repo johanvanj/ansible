@@ -1,7 +1,7 @@
 - name: file create test playbook
   hosts: all
   tasks:
-    - name: create file '/tmp/{{ file_name }}' if it does not exist
+    - name: create file "/tmp/{{ file_name }}" if it does not exist
       copy:
         content: ""
         dest: "/tmp/{{ file_name }}"
@@ -10,7 +10,7 @@
         owner: root
         mode: 0555
 
-    - name: check that the file '/tmp/{{ file_name }}' was created
+    - name: check that the file "/tmp/{{ file_name }}" was created
       stat:
         path: "/tmp/{{ file_name }}"
       register: file_stat
