@@ -2,9 +2,10 @@
   hosts: all
   tasks:
     - name: "create file '/tmp/{{ file_name }}' if it does not exist"
-      command: touch "/tmp/{{ file_name }}"
-      args:
-        creates: "/tmp/{{ file_name }}"
+      copy:
+        src: ""
+        dest: "/tmp/{{ file_name }}"
+        mode: 0644
 
     - name: "check that the file '/tmp/{{ file_name }}' was created"
       stat:
